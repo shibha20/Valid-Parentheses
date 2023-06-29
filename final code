@@ -1,0 +1,22 @@
+class Solution(object):
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+
+        stack = {
+            "(" : ")",
+            "{"  : "}",
+            "[" : "]"
+        }
+
+        stack_arr = []
+        for bracket in s:
+            if bracket in stack:
+                stack_arr.append(bracket)
+            elif len(stack_arr)==0 or (bracket != stack[stack_arr.pop()]):
+                return False
+            
+
+        return (len(stack_arr) ==0)
